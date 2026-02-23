@@ -1,0 +1,15 @@
+langchain
+langchain-google-genai
+langchain-huggingface
+langchain-classic
+langchain-community
+pypdf
+streamlit
+grandalf
+faiss-cpu
+chromadb
+torch
+scikit-learn
+google-generativeai
+wikipedia
+sentence-transformers
