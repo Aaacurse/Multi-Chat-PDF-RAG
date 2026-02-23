@@ -30,7 +30,6 @@ from utils import (
 
 st.set_page_config(
     page_title=PAGE_TITLE,
-    page_icon=PAGE_ICON,
     layout=LAYOUT,
     initial_sidebar_state="expanded"
 )
@@ -109,7 +108,7 @@ with st.sidebar:
     )
     
     if uploaded_file:
-        if st.button("⚡ Process PDF", use_container_width=True, type="primary"):
+        if st.button("Process PDF", use_container_width=True, type="primary"):
             
             st.session_state.processing = True
             

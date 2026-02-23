@@ -67,8 +67,8 @@ VECTOR_STORE_DIR.mkdir(parents=True, exist_ok=True)
 # STREAMLIT CONFIGURATION
 # ══════════════════════════════════════════════════════════════════════════════
 
-PAGE_TITLE = "📄 PDF RAG Chat"
-PAGE_ICON = "📄"
+PAGE_TITLE = "PDF RAG Chat"
+PAGE_ICON = ""
 LAYOUT = "wide"  # "centered" or "wide"
 
 # ══════════════════════════════════════════════════════════════════════════════
