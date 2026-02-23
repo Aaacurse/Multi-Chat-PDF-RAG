@@ -13,3 +13,4 @@ scikit-learn
 google-generativeai
 wikipedia
 sentence-transformers
+pytest
