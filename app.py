@@ -472,36 +472,6 @@ else:
         
         Chat with your PDF documents using AI-powered retrieval augmented generation.
         
-        #### ✨ Features
-        
-        - 📄 **Upload multiple PDFs** — Each document gets its own vector database
-        - 💬 **Multiple chat sessions** — Create unlimited conversations per PDF
-        - 🧠 **Context-aware** — AI remembers your conversation history
-        - 📚 **Source citations** — Every answer includes page references
-        - 💾 **Persistent storage** — Your chats are saved automatically
-        
-        #### 🚀 Get Started
-        
-        1. Click **"Upload PDF"** in the sidebar
-        2. Select a PDF document from your computer
-        3. Click **"⚡ Process PDF"** to create the vector index
-        4. Start asking questions in the chat!
-        
-        #### 💡 Tips
-        
-        - Create multiple chats to organize different topics
-        - Click on source citations to see which pages were referenced
-        - Rename chats to keep them organized
-        - Use the sidebar to switch between different documents
-        
-        ---
-        
-        #### 🔧 Powered By
-        
-        - 🦜 **LangChain** — AI orchestration framework
-        - ⚡ **FAISS** — Fast vector similarity search
-        - 🧠 **Google Gemini** — Advanced language model
-        - 🎈 **Streamlit** — Interactive web interface
         """)
         
         st.info("👈 **Upload a PDF from the sidebar to begin!**")
