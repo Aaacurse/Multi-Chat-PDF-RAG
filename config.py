@@ -11,12 +11,12 @@ load_dotenv()
 # API KEYS
 # ══════════════════════════════════════════════════════════════════════════════
 
-GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
+HUGGINGFACEHUB_API_TOKEN=os.getenv("HUGGINGFACEHUB_API_TOKEN")
 
-if not GOOGLE_API_KEY:
+if not HUGGINGFACEHUB_API_TOKEN:
     raise ValueError(
-        "GOOGLE_API_KEY not found! Please add it to your .env file:\n"
-        "GOOGLE_API_KEY=your_api_key_here"
+        "HUGGINGFACEHUB_API_TOKEN not found! Please add it to your .env file:\n"
+        "HUGGINGFACEHUB_API_TOKEN=your_api_key_here"
     )
 
 # ══════════════════════════════════════════════════════════════════════════════
@@ -27,8 +27,9 @@ if not GOOGLE_API_KEY:
 EMBEDDING_MODEL = "gemini-embedding-001"  # Gemini embedding model
 
 # LLM Model
-LLM_MODEL = "gemini-2.5-flash"  # Fast and cost-effective
+LLM_MODEL = "openai/gpt-oss-20b"  # Fast and cost-effective
 LLM_TEMP = 0.5  # Lower = more factual, Higher = more creative
+LLM_TASK='text-generation'
 
 # ══════════════════════════════════════════════════════════════════════════════
 # TEXT SPLITTING CONFIGURATION
@@ -92,7 +93,7 @@ def validate_config():
     """Validate configuration on import"""
     
     # Check if API key is set
-    if not GOOGLE_API_KEY or GOOGLE_API_KEY == "your_api_key_here":
+    if not HUGGINGFACEHUB_API_TOKEN or HUGGINGFACEHUB_API_TOKEN == "your_api_key_here":
         raise ValueError(
             "⚠️ GOOGLE_API_KEY is not properly configured!\n\n"
             "Please create a .env file in the project root with:\n"
@@ -120,7 +121,7 @@ validate_config()
 
 __all__ = [
     # API
-    "GOOGLE_API_KEY",
+    "HUGGINGFACEHUB_API_TOKEN",
     
     # Models
     "EMBEDDING_MODEL",

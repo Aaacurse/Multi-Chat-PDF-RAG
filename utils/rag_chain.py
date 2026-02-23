@@ -2,6 +2,7 @@ from typing import List
 from operator import itemgetter
 
 from langchain_google_genai import ChatGoogleGenerativeAI
+from langchain_huggingface import ChatHuggingFace,HuggingFaceEndpoint
 from langchain_classic.schema.messages import BaseMessage
 from langchain_classic.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain_classic.schema.runnable import RunnableParallel
@@ -9,7 +10,7 @@ from langchain_classic.schema.output_parser import StrOutputParser
 
 from langchain_core.runnables import RunnableLambda
 
-from config import LLM_MODEL, LLM_TEMP
+from config import LLM_MODEL, LLM_TEMP,LLM_TASK
 
 
 # -----------------------------
@@ -41,10 +42,12 @@ def create_custom_rag_chain(retriever, chat_history: List[BaseMessage]):
     """
 
     # LLM
-    llm = ChatGoogleGenerativeAI(
-        model=LLM_MODEL,
-        temperature=LLM_TEMP
-    )
+    llm=HuggingFaceEndpoint(
+    repo_id=LLM_MODEL,
+    task=LLM_TASK
+)
+
+    model=ChatHuggingFace(llm=llm)
 
     # Prompt
     prompt = ChatPromptTemplate.from_messages([
@@ -52,7 +55,7 @@ def create_custom_rag_chain(retriever, chat_history: List[BaseMessage]):
 
 Use the following context from the document to answer the user's question.
 If you cannot find the answer in the context, say so clearly.
-Always cite the page number when referencing information.
+Always cite the page number when referencing information.Use paragraphs and do not use table structure to return the response unless specifically asked to do so.
 
 Context:
 {context}"""),
@@ -77,7 +80,7 @@ Context:
             }
         )
         | prompt
-        | llm
+        | model
         | StrOutputParser()
     )
 
@@ -99,10 +102,12 @@ def create_custom_rag_chain_with_sources(
         }
     """
 
-    llm = ChatGoogleGenerativeAI(
-        model=LLM_MODEL,
-        temperature=LLM_TEMP
-    )
+    llm=HuggingFaceEndpoint(
+    repo_id=LLM_MODEL,
+    task=LLM_TASK
+)
+
+    model=ChatHuggingFace(llm=llm)
 
     prompt = ChatPromptTemplate.from_messages([
         ("system", """You are a helpful AI assistant analyzing a PDF document.
@@ -137,7 +142,7 @@ Context:
             }
         )
         | prompt
-        | llm
+        | model
         | StrOutputParser()
     )
 
